@@ -149,12 +149,31 @@ struct node *delete_node(struct node *start)
   int val;
   cout<<"\nEnter the value of the node which has to be deleted:";
   cin>>val;
+  ptr=start;
   if(ptr->data==val)
   {
     start=delete_beg(start);
     return start;
   }
   while(ptr->data!=val)
+  {
+    preptr=ptr;
+    ptr=ptr->next;
+  }
+  preptr->next=ptr->next;
+  free(ptr);
+  return start;
+}
+
+struct node *delete_after(struct node *start)
+{
+  struct node *ptr,*preptr;
+  int val;
+  cout<<"\nEnter the value of the node which has to be deleted:";
+  cin>>val;
+  ptr=start;
+  preptr=start;
+  while(preptr->data!=val)
   {
     preptr=ptr;
     ptr=ptr->next;
