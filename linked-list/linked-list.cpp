@@ -128,3 +128,17 @@ struct node *delete_beg(struct node *start)
   free(ptr);
   return ptr;
 }
+
+struct node *delete_end(struct node *start)
+{
+  struct node *ptr,*preptr;
+  ptr=start;
+  while(ptr->next!=NULL)
+  {
+    preptr=ptr;
+    ptr=ptr->next;
+  }
+  preptr->next=NULL;
+  free(ptr);
+  return start;
+}
