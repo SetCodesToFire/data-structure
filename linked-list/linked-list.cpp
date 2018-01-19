@@ -182,3 +182,19 @@ struct node *delete_after(struct node *start)
   free(ptr);
   return start;
 }
+
+struct node *delete_list(struct node *start)
+{
+  struct node *ptr;
+  if(start!=NULL)
+  {
+    ptr=start;
+    while(ptr!=NULL)
+    {
+      cout<<"\n"<<ptr->data<<"deleting...";
+      start=delete_beg(ptr);
+      ptr=start;
+    }
+  }
+  return start;
+}
