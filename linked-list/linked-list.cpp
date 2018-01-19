@@ -10,9 +10,74 @@ struct node
 
 struct node *start = NULL;
 
+struct node *create_ll(struct node *start);
+void display(struct node *start);
+struct node *insert_beg(struct node *start);
+struct node *insert_end(struct node *start);
+struct node *insert_before(struct node *start);
+struct node *insert_after(struct node *start);
+struct node *delete_beg(struct node *start);
+struct node *delete_end(struct node *start);
+struct node *delete_node(struct node *start);
+struct node *delete_after(struct node *start);
+struct node *delete_list(struct node *start);
+struct node *sort_list(struct node *start);
+
 int main(void)
 {
-
+  int option;
+  do{
+    cout<<"\n Menu:";
+    cout<<"\n \t 1:Create list";
+    cout<<"\n \t 2:Display list";
+    cout<<"\n \t 3:Add a node at the beginning";
+    cout<<"\n \t 4:Add a node at the end";
+    cout<<"\n \t 5:Add a new node before a given node";
+    cout<<"\n \t 6:Add a new node after a given node";
+    cout<<"\n \t 7:Deleting a node from the beginning";
+    cout<<"\n \t 8:Deleting a node from the end";
+    cout<<"\n \t 9:Deleting a given node";
+    cout<<"\n \t 10:Deleting a node after a given node";
+    cout<<"\n \t 11:Deleting the entire list";
+    cout<<"\n \t 12:Sort the list";
+    cout<<"\n \t 13:Exit";
+    cout<<"\n \t 14:Enter the choice:";
+    cin>>option;
+    switch(option)
+    {
+      case 1: int opt;
+              do
+              {
+                start=create_ll(start);
+                cout<<"\nDo you wish to add more elements: (y or n)";
+                cin>>opt;
+              }while(opt=='y'||opt=='Y');
+              break;
+      case 2: display(start);
+              break;
+      case 3: start=insert_beg(start);
+              break;
+      case 4: start=insert_end(start);
+              break;
+      case 5: start=insert_before(start);
+              break;
+      case 6: start=insert_after(start);
+              break;
+      case 7: start=delete_beg(start);
+              break;
+      case 8: start=delete_end(start);
+              break;
+      case 9: start=delete_node(start);
+              break;
+      case 10: start=delete_after(start);
+              break;
+      case 11: start=delete_list(start);
+              break;
+      case 12: start=sort_list(start);
+              break;
+    }
+  }while(option!=13);
+  return 0;
 }
 
 struct node *create_ll(struct node *start)
@@ -38,7 +103,7 @@ struct node *create_ll(struct node *start)
   return start;
 }
 
-void *display(struct node *start)
+void display(struct node *start)
 {
   struct node *ptr;
   ptr=start;
@@ -193,9 +258,11 @@ struct node *delete_list(struct node *start)
     {
       cout<<"\n"<<ptr->data<<"deleting...";
       start=delete_beg(ptr);
+      cout<<"\n deleted";
       ptr=start;
     }
   }
+  cout<<"\n Deleted the entire list";
   return start;
 }
 
@@ -204,7 +271,7 @@ struct node *sorted_list(struct node *start)
   struct node *ptr1,*ptr2;
   int temp;
   ptr1=start;
-  while(ptr->next!=NULL)
+  while(ptr1->next!=NULL)
   {
     ptr2=ptr1->next;
     while(ptr2!+NULL)
@@ -219,4 +286,5 @@ struct node *sorted_list(struct node *start)
     }
     ptr1=ptr1->next;
   }
+  return start;
 }
