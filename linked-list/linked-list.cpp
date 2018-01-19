@@ -48,9 +48,9 @@ int main(void)
       case 1: int opt;
               do
               {
-                start=create_ll(start);
                 cout<<"\nDo you wish to add more elements: (y or n)";
                 cin>>opt;
+                start=create_ll(start);
               }while(opt=='y'||opt=='Y');
               break;
       case 2: display(start);
@@ -266,7 +266,7 @@ struct node *delete_list(struct node *start)
   return start;
 }
 
-struct node *sorted_list(struct node *start)
+struct node *sort_list(struct node *start)
 {
   struct node *ptr1,*ptr2;
   int temp;
@@ -274,7 +274,7 @@ struct node *sorted_list(struct node *start)
   while(ptr1->next!=NULL)
   {
     ptr2=ptr1->next;
-    while(ptr2!+NULL)
+    while(ptr2!=NULL)
     {
       if(ptr1->data > ptr2->data)
       {
