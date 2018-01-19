@@ -198,3 +198,25 @@ struct node *delete_list(struct node *start)
   }
   return start;
 }
+
+struct node *sorted_list(struct node *start)
+{
+  struct node *ptr1,*ptr2;
+  int temp;
+  ptr1=start;
+  while(ptr->next!=NULL)
+  {
+    ptr2=ptr1->next;
+    while(ptr2!+NULL)
+    {
+      if(ptr1->data > ptr2->data)
+      {
+        temp=ptr1->data;
+        ptr1->data=ptr2->data;
+        ptr2->data=temp;
+      }
+      ptr2=ptr2->next;
+    }
+    ptr1=ptr1->next;
+  }
+}
