@@ -119,3 +119,12 @@ struct node *insert_after(struct node *start)
   new_node->next=ptr;
   return start;
 }
+
+struct node *delete_beg(struct node *start)
+{
+  struct node *ptr;
+  ptr=start;
+  start=start->next;
+  free(ptr);
+  return ptr;
+}
