@@ -45,13 +45,7 @@ int main(void)
     cin>>option;
     switch(option)
     {
-      case 1: int opt;
-              do
-              {
-                cout<<"\nDo you wish to add more elements: (y or n)";
-                cin>>opt;
-                start=create_ll(start);
-              }while(opt=='y'||opt=='Y');
+      case 1: start=create_ll(start);
               break;
       case 2: display(start);
               break;
@@ -84,21 +78,27 @@ struct node *create_ll(struct node *start)
 {
   struct node *new_node, *ptr;
   int num;
+  cout<<"\nEnter -1 to end:::";
   cout<<"\nEnter the data: ";
   cin>>num;
-  new_node=(struct node*)malloc(sizeof(struct node));
-  new_node->data=num;
-  if(start==NULL)
+  while(num!=-1)
   {
-    new_node->next=NULL;
-    start=new_node;
-  }
-  else
-  {
-    ptr=start;
-    while(ptr->next!=NULL) ptr=ptr->next;
-    ptr->next=new_node;
-    new_node->next=NULL;
+      new_node=(struct node*)malloc(sizeof(struct node));
+      new_node->data=num;
+      if(start==NULL)
+      {
+        new_node->next=NULL;
+        start=new_node;
+      }
+      else
+      {
+        ptr=start;
+        while(ptr->next!=NULL) ptr=ptr->next;
+        ptr->next=new_node;
+        new_node->next=NULL;
+      }
+      cout<<"\nEnter the data:";
+      cin>>num;
   }
   return start;
 }
@@ -130,14 +130,14 @@ struct node *insert_beg(struct node *start)
 struct node *insert_end(struct node *start)
 {
   struct node *ptr, *new_node;
-  ptr=start;
   int num;
   cout<<"\nEnter the data:";
   cin>>num;
   new_node=(struct node *)malloc(sizeof(struct node));
   new_node->data=num;
   new_node->next=NULL;
-  while(ptr!=NULL) ptr=ptr->next;
+  ptr=start;
+  while(ptr->next!=NULL) ptr=ptr->next;
   ptr->next=new_node;
   return start;
 }
@@ -191,7 +191,7 @@ struct node *delete_beg(struct node *start)
   ptr=start;
   start=start->next;
   free(ptr);
-  return ptr;
+  return start;
 }
 
 struct node *delete_end(struct node *start)
@@ -234,10 +234,10 @@ struct node *delete_after(struct node *start)
 {
   struct node *ptr,*preptr;
   int val;
-  cout<<"\nEnter the value of the node which has to be deleted:";
+  cout<<"\nEnter the value of the node,the node after this one has to be deleted:";
   cin>>val;
   ptr=start;
-  preptr=start;
+  preptr=ptr;
   while(preptr->data!=val)
   {
     preptr=ptr;
