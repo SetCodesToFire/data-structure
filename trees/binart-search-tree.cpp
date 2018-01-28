@@ -68,3 +68,14 @@ struct node *insertElement(struct node *tree,int val)
   }
   return tree;
 }
+
+//function for preorder traversal
+void preorderTraversal(struct node *tree)
+{
+  if(tree!=NULL)
+  {
+    cout<<tree->data<<"\t";
+    preorderTraversal(tree->left);
+    preorderTraversal(tree->right);
+  }
+}
