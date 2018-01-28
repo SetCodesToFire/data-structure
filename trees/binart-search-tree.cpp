@@ -209,3 +209,20 @@ int totalInternalNodes(struct node *tree)
   else
     return(totalExternalNodes(tree->left)+totalExternalNodes(tree->right)+1);
 }
+
+//function to calculate the height of the TREE
+int height(struct node *tree)
+{
+  int leftheight,rightheight;
+  if(tree==NULL)
+    return 0;
+  else
+  {
+    leftheight=height(tree->left);
+    rightheight=height(tree->right);
+    if(leftheight>rightheight)
+      return leftheight+1;
+    else
+      return rightheight+1;
+  }
+}
