@@ -79,3 +79,14 @@ void preorderTraversal(struct node *tree)
     preorderTraversal(tree->right);
   }
 }
+
+//function for inorder traversal
+void inorderTraversal(struct node *tree)
+{
+  if(tree!=NULL)
+  {
+    inorderTraversal(tree->left);
+    cout<<tree->data<<"\t";
+    inorderTraversal(tree->right);
+  }
+}
