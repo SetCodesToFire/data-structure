@@ -226,3 +226,17 @@ int height(struct node *tree)
       return rightheight+1;
   }
 }
+
+//function to make the mirror image of the TREE
+struct node *mirrorImage(struct node *tree)
+{
+  struct node *ptr;
+  if(tree!=NULL)
+  {
+    mirrorImage(tree->left);
+    mirrorImage(tree->right);
+    ptr=tree->left;
+    ptr->left=prt->right;
+    tree->right=ptr;
+  }
+}
