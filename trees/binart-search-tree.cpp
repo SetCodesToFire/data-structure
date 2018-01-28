@@ -200,3 +200,12 @@ int totalExternalNodes(struct node *tree)
   else
     return(totalExternalNodes(tree->left)+totalExternalNodes(tree->right));
 }
+
+//function to count the number of internal nodes in the TREE
+int totalInternalNodes(struct node *tree)
+{
+  if(tree==NULL || tree->left==NULL&&tree->right==NULL)
+    return 0;
+  else
+    return(totalExternalNodes(tree->left)+totalExternalNodes(tree->right)+1);
+}
