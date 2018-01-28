@@ -127,3 +127,56 @@ struct node *findLargestElement(struct node *tree)
     return findLargestElement(tree->right);
   }
 }
+
+//function for deleting a node from the tree
+struct node *deleteElement(struct node *tree,int val)
+{
+  struct node *cur,*parent,*suc,*psuc,*ptr;
+  if(tree->left==NULL)
+  {
+    cout<<"\nTree is empty";
+    return tree;
+  }
+  parent=tree;
+  cur=tree->left;
+  while(cur!=NULL&&val!=cur->data)
+  {
+    parent=cur;
+    cur=(val<cur->data)?cur->left:cur->right;
+  }
+  if(cur==NULL)
+  {
+    cout<<"\nThe value to be deleted is not present in the tree";
+    return tree;
+  }
+  if(cur->left==NULL)
+    ptr=cur->right;
+  elseif(cur->right==NULL)
+    ptr=cur->left;
+  else
+  {
+    psuc=cur;
+    cur=cur->left;
+    while(suc->left!=NULL)
+    {
+      psuc=suc;
+      suc=suc->left;
+    }
+    if(cur==psuc)
+    {
+      suc->left=cur->right;
+    }
+    else{
+      suc->left=cur->left;
+      psuc->left=suc->right;
+      suc->right=cur->right;
+    }
+    ptr=suc;
+  }
+  if(parent->left==cur)
+    parent->left=ptr;
+  else
+    parent->right=ptr;
+  free(cur);
+  return tree;
+}
