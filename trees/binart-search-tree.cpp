@@ -240,3 +240,14 @@ struct node *mirrorImage(struct node *tree)
     tree->right=ptr;
   }
 }
+
+//function to delete the complete tree
+struct node *deleteTree(struct node *tree)
+{
+  if(tree!=NULL)
+  {
+    deleteTree(tree->left);
+    deleteTree(tree->right);
+    free(tree);
+  }
+}
