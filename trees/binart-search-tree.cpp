@@ -90,3 +90,14 @@ void inorderTraversal(struct node *tree)
     inorderTraversal(tree->right);
   }
 }
+
+//function for postorder traversal
+void postorderTraversal(struct node *tree)
+{
+  if(tree!=NULL)
+  {
+    postorderTraversal(tree->left);
+    postorderTraversal(tree->right);
+    cout<<tree->data<<"\t";
+  }
+}
