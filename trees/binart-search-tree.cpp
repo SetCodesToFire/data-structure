@@ -151,7 +151,7 @@ struct node *deleteElement(struct node *tree,int val)
   }
   if(cur->left==NULL)
     ptr=cur->right;
-  elseif(cur->right==NULL)
+  else if(cur->right==NULL)
     ptr=cur->left;
   else
   {
@@ -188,4 +188,15 @@ int totalNodes(struct node *tree)
     return 0;
   else
     return (totalNodes(tree->left)+totalNodes(tree->right)+1)
+}
+
+//function to count the number of external nodes in the TREE
+int totalExternalNodes(struct node *tree)
+{
+  if(tree==NULL)
+    return 0;
+  else if(tree->left==NULL&&tree->right==NULL)
+    return 1;
+  else
+    return(totalExternalNodes(tree->left)+totalExternalNodes(tree->right));
 }
