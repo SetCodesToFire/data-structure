@@ -180,3 +180,12 @@ struct node *deleteElement(struct node *tree,int val)
   free(cur);
   return tree;
 }
+
+//function to count the number of nodes in a TREE
+int totalNodes(struct node *tree)
+{
+  if(tree==NULL)
+    return 0;
+  else
+    return (totalNodes(tree->left)+totalNodes(tree->right)+1)
+}
