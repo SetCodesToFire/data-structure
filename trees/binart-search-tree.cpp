@@ -30,4 +30,41 @@ node *TREE = NULL;
   }
 }
 
-void
+void create_tree(struct node *tree)
+{
+  tree=NULL;
+}
+
+//function to insert element inside the tree
+struct node *insertElement(struct node *tree,int val)
+{
+  struct node *ptr, *nodeptr, *parentptr;
+  ptr = (struct node *)malloc(sizeof(struct node));
+  ptr->data=val;
+  ptr->left=NULL;
+  ptr->right=NULL;
+  if(tree==NULL)
+  {
+    tree=ptr;
+    tree->left=NULL;
+    tree->right=NULL;
+  }
+  else
+  {
+    parentptr=NULL;
+    nodeptr=tree;
+    while(nodeptr!=NULL)
+    {
+      parentptr=nodeptr;
+      if(val<nodeptr->data)
+        nodeptr=nodeptr->left;
+      else
+        nodeptr=nodeptr->right;
+    }
+    if(val<parentptr->data)
+      parentptr->left=ptr;
+    else
+      parentptr->right=ptr;
+  }
+  return tree;
+}
