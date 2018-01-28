@@ -114,3 +114,16 @@ struct node *findSmallestElement(struct node *tree)
     return findSmallestElement(tree->left);
   }
 }
+
+//function for largest element in the tree
+struct node *findLargestElement(struct node *tree)
+{
+  if(tree==NULL||tree->right==NULL)
+  {
+    return tree;
+  }
+  else
+  {
+    return findLargestElement(tree->right);
+  }
+}
