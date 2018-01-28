@@ -101,3 +101,16 @@ void postorderTraversal(struct node *tree)
     cout<<tree->data<<"\t";
   }
 }
+
+//function for smallest element in the tree
+struct node *findSmallestElement(struct node *tree)
+{
+  if(tree==NULL||tree->left==NULL)
+  {
+    return tree;
+  }
+  else
+  {
+    return findSmallestElement(tree->left);
+  }
+}
