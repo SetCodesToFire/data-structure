@@ -11,20 +11,20 @@ struct node{
 
 node *TREE = NULL;
 
- searchElement(TREE, val)
+struct node *searchElement(struct node *tree,int val)
 {
-  if(TREE!=NULL){
-    if(TREE->data == val)
+  if(tree!=NULL){
+    if(tree->data == val)
     {
-      return TREE;
+      return tree;
     }
     else
     {
-      if(val < TREE->data){
-        return searchElement(TREE->left,val);
+      if(val < tree->data){
+        return searchElement(tree->left,val);
       }
       else{
-        return searchElement(TREE->right,val);
+        return searchElement(tree->right,val);
       }
     }
   }
